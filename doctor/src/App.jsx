@@ -5,13 +5,22 @@ import './App.css';
 import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import FormsPage from "./FormsPage"
-import MedicalHistoryPage from './MedicalHistoryPage'
+import MedicalHistoryPage from './MedicalHistoryPage';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
 function App() {
  const [count, setCount] = useState(0);
 
  return (
     <>
+    <header>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+    </header>
       <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
@@ -24,3 +33,7 @@ function App() {
 }
 
 export default App;
+
+
+
+
