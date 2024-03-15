@@ -26,13 +26,18 @@ function HomePage() {
         alignItems="center"
         height="100vh"
       >
-        <Link to="/prescribing ">
+        <Link to="/prescriptioncard ">
         <StyledButton variant="contained" color="primary">
-          Start Diagnosis
+          View Prescription
+        </StyledButton>
+        </Link>
+        <Link to="/medicalhistory">
+        <StyledButton variant="contained" color="secondary">
+          View History
         </StyledButton>
         </Link>
         <StyledButton variant="contained" color="secondary">
-          Update Prescription
+          Place Order
         </StyledButton>
       </Box>
     </Container>
