@@ -66,6 +66,16 @@ export default function VideoCall() {
     });
  };
 
+ const sendInvite =async()=>{
+  const response = await fetch('localhost:3000/api/sendinvite', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      body: JSON.stringify({url:sharedLinks.url})
+    },
+  })
+ }
+
  return (
     <div>
         <div
