@@ -1,0 +1,50 @@
+/* SignInButton.css */
+.sign-in-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 7vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+   }
+   
+   .sign-in-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+   }
+   
+   /* SignInButton.css */
+.user-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+   }
+   
+   .user-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+   }
+   
+
+.sign-in-section {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font: 18px;
+   }
+   

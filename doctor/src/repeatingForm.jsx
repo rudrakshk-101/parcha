@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-// import "./styles.css";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import RemoveIcon from "@material-ui/icons/Remove";
+import { styled } from '@mui/system';
 import AddIcon from "@material-ui/icons/Add";
-import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles((theme) => ({
  root: {
@@ -20,28 +19,63 @@ const useStyles = makeStyles((theme) => ({
  }
 }));
 
-const Medicine = () => {
+const StyledButton = styled(Button)({
+ fontSize: '1.2rem',
+ padding: '10px 20px',
+ marginTop: '20px',
+ borderRadius: '10px',
+ textTransform: 'none',
+ '&:hover': {
+    backgroundColor: '#007bff',
+    color: '#fff',
+ },
+});
+
+const Medicine = ({ phoneNo }) => {
  const classes = useStyles();
-
- // Adjusted initial state to include Medicine, Dosage, Frequency, and Duration
  const [inputFields, setInputFields] = useState([
-    { Medicine: "", Dosage: "", Frequency: "", Duration: "" }
+    { name: "", dosage: "", frequencyPerDay: "", durationInDays: "" }
  ]);
+ const [description, setDescription] = useState("");
+ const severity = 1; // Assuming severity is a constant value
 
- // Updated handleChangeInput to handle the new fields
  const handleChangeInput = (index, event) => {
     const values = [...inputFields];
     values[index][event.target.name] = event.target.value;
     setInputFields(values);
  };
 
- const handleSubmit = (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputFields);
+    const dataToSend = {
+      diagnosisDescription: description,
+      prescription: inputFields,
+      severity: severity
+    };
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/doctors/submit-diagnosis/${phoneNo}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+    }
+     catch (error) {
+      console.error('Error:', error);
+    }
  };
 
  const handleAddFields = () => {
-    setInputFields([...inputFields, { Medicine: "", Dosage: "", Frequency: "", Duration: "" }]);
+    setInputFields([...inputFields, { name: "", dosage: "", frequencyPerDay: "", durationInDays: "" }]);
  };
 
  const handleRemoveFields = (index) => {
@@ -52,38 +86,49 @@ const Medicine = () => {
 
  return (
     <div className="App">
-      <h1>Dynamic Form In React</h1>
       <Container className="Container">
         <form onSubmit={handleSubmit} className={classes.root}>
+          {/* <TextField
+            name="description"
+            label="Diagnosis Description"
+            variant="filled"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+            fullWidth
+          /> */}
           {inputFields.map((inputField, index) => (
             <div key={index}>
               <TextField
-                name="Medicine"
-                label="Medicine"
+                name="name"
+                label="Medicine Name"
                 variant="filled"
-                value={inputField.Medicine}
+                value={inputField.name}
                 onChange={(event) => handleChangeInput(index, event)}
+                fullWidth
               />
               <TextField
-                name="Dosage"
+                name="dosage"
                 label="Dosage"
                 variant="filled"
-                value={inputField.Dosage}
+                value={inputField.dosage}
                 onChange={(event) => handleChangeInput(index, event)}
+                fullWidth
               />
               <TextField
-                name="Frequency"
-                label="Frequency"
+                name="frequencyPerDay"
+                label="Frequency Per Day"
                 variant="filled"
-                value={inputField.Frequency}
+                value={inputField.frequencyPerDay}
                 onChange={(event) => handleChangeInput(index, event)}
+                fullWidth
               />
               <TextField
-                name="Duration"
-                label="Duration"
+                name="durationInDays"
+                label="Duration in Days"
                 variant="filled"
-                value={inputField.Duration}
+                value={inputField.durationInDays}
                 onChange={(event) => handleChangeInput(index, event)}
+                fullWidth
               />
               <IconButton onClick={() => handleRemoveFields(index)}>
                 <RemoveIcon />
@@ -93,16 +138,9 @@ const Medicine = () => {
               </IconButton>
             </div>
           ))}
-          {/* <Button
-            className={classes.button}
-            variant="contained"
-            color="primary"
-            type="submit"
-            endIcon={<Icon>send</Icon>}
-            onClick={handleSubmit}
-          >
-            Send
-          </Button> */}
+          <StyledButton variant="contained" type="submit" color="secondary">
+            Submit
+          </StyledButton>
         </form>
       </Container>
     </div>

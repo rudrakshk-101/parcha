@@ -2,9 +2,9 @@ const { Schema, model, models } = require('mongoose');
 
 const PrescriptionSchema = new Schema({
     name: { type: String, required: true },
-    dosageInMg: { type: Number, required: true },
-    frequencyPerDay: { type: Number, required: true},
-    durationInDays: { type: Number, required: true},
+    dosageInMg: { type: String, required: true },
+    frequencyPerDay: { type: String, required: true},
+    durationInDays: { type: String, required: true},
     valid: { type: Boolean, default: true}
 });
 

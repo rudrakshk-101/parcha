@@ -9,6 +9,7 @@ import MedicalHistoryPage from './MedicalHistoryPage';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import PrescriptionUpdate from "./PrescriptionUpdate";
 import VideoCall from "./videoCall"
+import './SignInButton.css';
 
 function App() {
  const [count, setCount] = useState(0);
@@ -16,12 +17,14 @@ function App() {
  return (
     <>
     <header>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
+    <div className="sign-in-section">
+        <SignedOut>
+          <SignInButton className="sign-in-button" />
+        </SignedOut>
+        <SignedIn>
+          <UserButton className="user-button" />
+        </SignedIn>
+      </div>
     </header>
       <BrowserRouter>
       <Routes>

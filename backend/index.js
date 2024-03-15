@@ -13,10 +13,11 @@ const app = express();
 
 // Middleware
 app.use(cors());
+app.use(express.json());
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/parchaDB");
+mongoose.connect("mongodb://localhost:27017/parchdb");
 
 const Token = require('./models/token'); // Adjust the path as necessary
 

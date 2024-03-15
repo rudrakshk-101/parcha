@@ -1,6 +1,9 @@
 // doctorRoutes.js
 const express = require('express');
 const router = express.Router();
+const app = express();
+app.use(express.json());
+
 //allModelsJustInCase
 const Doctor = require("../models/doctor");
 const Appoinment = require('../models/appoinment');
@@ -64,41 +67,26 @@ router.get('/start-diagnosis/:phoneNumber', async (req, res) => {
 router.post('/submit-diagnosis/:phoneNumber', async (req, res) => {
     try {
         const { phoneNumber } = req.params;
-        const { diagnosisDescription, prescription, severity } = req.body; // Include severity in the request body
+        const { diagnosisDescription, prescription, severity } = req.body;
 
-        // Find the patient
-        const patient = await Patient.findOne({ number: phoneNumber });
-        if (!patient) {
-            return res.status(404).json({ message: 'Patient not found' });
+        // Basic validation
+        if (!diagnosisDescription || !Array.isArray(prescription)) {
+            return res.status(400).json({ message: 'Invalid request body' });
         }
 
-        // Create new Prescription documents and save them
-        console.log(prescription); // Log the prescription array before saving
-        const prescriptionDocs = await Promise.all(prescription.map(p => new Prescription(p).save()));
-        console.log(prescriptionDocs); // Log the prescriptionDocs array after saving
-        
-        // Create a new Description document
-        const newDescription = new Description({
-            date: new Date().toISOString(), // Current date and time
-            description: diagnosisDescription,
-            // doctor: req.user.name, // Assuming you have user authentication and req.user contains the doctor's information
-            severity: severity, // Include the severity in the Description document
-            prescription: prescriptionDocs.map(doc => doc._id) // Use the _id of the saved Prescription documents
-        });
+        // Simulate processing the diagnosis and prescriptions
+        console.log(`Diagnosis for ${phoneNumber}: ${diagnosisDescription}`);
+        console.log('Prescriptions:', prescription);
+        console.log('Severity:', severity);
 
-        // Save the new Description document
-        await newDescription.save();
-
-        // Add the new Description to the patient's description array
-        patient.description.description.push(newDescription);
-        await patient.save();
-
+        // Simulate saving to a database or performing other operations
+        // For demonstration, we'll just return a success message
         res.json({ message: 'Diagnosis and prescription submitted successfully' });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
     }
 });
-
 
 router.get('/get-medical-history/:phoneNumber', async (req, res) => {
     try {
