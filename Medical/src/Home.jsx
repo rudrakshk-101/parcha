@@ -31,7 +31,7 @@ function HomePage() {
           Create Order
         </StyledButton>
         </Link>
-        <Link to="/medicalhistory">
+        <Link to="/orderrequests">
         <StyledButton variant="contained" color="secondary">
           View Order Request
         </StyledButton>

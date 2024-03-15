@@ -8,7 +8,8 @@ import FormsPage from "./FormsPage"
 import MedicalHistoryPage from './MedicalHistoryPage';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import PrescriptionCard from './PrescriptionCard';
-import PharmacistForm from "./PharmacistForm"
+import PharmacistForm from "./PharmacistForm";
+import PrescriptionPage from "./OrderPage"
 
 function App() {
  const [count, setCount] = useState(0);
@@ -30,6 +31,7 @@ function App() {
         <Route path='/medicalhistory' element={<MedicalHistoryPage />} />
         <Route path='/prescriptioncard' element={<PrescriptionCard />} />
         <Route path='/pharmacistform' element={<PharmacistForm />} />
+        <Route path='/orderRequests' element={<PrescriptionPage />} />
       </Routes>
       </BrowserRouter>
     </>

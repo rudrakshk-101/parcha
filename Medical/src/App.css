@@ -53,3 +53,11 @@
 .Container {
   padding: 1rem;
 }
+
+
+.orders{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+}

@@ -31,9 +31,11 @@ function HomePage() {
           Start Diagnosis
         </StyledButton>
         </Link>
+        <Link to="/prescriptionupdate">
         <StyledButton variant="contained" color="secondary">
           Update Prescription
         </StyledButton>
+        </Link>
       </Box>
     </Container>
  );

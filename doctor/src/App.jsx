@@ -7,6 +7,7 @@ import Home from './Home';
 import FormsPage from "./FormsPage"
 import MedicalHistoryPage from './MedicalHistoryPage';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import PrescriptionUpdate from "./PrescriptionUpdate"
 
 function App() {
  const [count, setCount] = useState(0);
@@ -26,6 +27,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path='/prescribing' element={<FormsPage />} />
         <Route path='/medicalhistory' element={<MedicalHistoryPage />} />
+        <Route path='/prescriptionupdate' element={<PrescriptionUpdate />} />
       </Routes>
       </BrowserRouter>
     </>
