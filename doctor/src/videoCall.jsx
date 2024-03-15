@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
+import MedicalFormPage from "./FormsPage"
 
 function randomID(len) {
  let result = '';
@@ -22,13 +23,25 @@ export function getUrlParams(
 }
 
 export default function VideoCall() {
+    const reloadPage = () => {
+        window.location.reload();
+      };
  const [roomID, setRoomID] = React.useState(getUrlParams().get('roomID') || randomID(5));
+ const containerRef = React.useRef(null);
 
  React.useEffect(() => {
+    const reloadPage = () => {
+        window.location.reload();
+      };
     const params = getUrlParams();
     const newRoomID = params.get('roomID') || randomID(5);
     setRoomID(newRoomID);
- }, []);
+
+    // Call myMeeting as soon as the roomID is set
+    if (containerRef.current) {
+        myMeeting(containerRef.current);
+    }
+ }, [roomID]); // Depend on roomID to re-run the effect when it changes
 
  let myMeeting = async (element) => {
     // generate Kit Token
@@ -51,19 +64,20 @@ export default function VideoCall() {
         mode: ZegoUIKitPrebuilt.GroupCall, // To implement 1-on-1 calls, modify the parameter here to [ZegoUIKitPrebuilt.OneONoneCall].
       },
     });
-    
  };
 
- const link = window.location.protocol + '//' + window.location.host + window.location.pathname + '?roomID=' + roomID;
-
  return (
-    <div
+    <div>
+        <div
       className="myCallContainer"
-      ref={myMeeting}
+      ref={containerRef}
       style={{ width: '100vw', height: '100vh' }}
     >
-      {/* Example of using the link in a button */}
-      <button onClick={() => window.location.href = link}>Join Call</button>
+      {/* The "Join Call" button is removed */}
+    </div>
+
+
+    <MedicalFormPage />
     </div>
  );
 }
