@@ -67,7 +67,7 @@ export default function VideoCall() {
  };
 
  const sendInvite =async()=>{
-  const response = await fetch('localhost:3000/api/sendinvite', {
+  const response = await fetch('http://localhost:3000/api/sendinvite', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

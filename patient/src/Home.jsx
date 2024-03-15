@@ -25,7 +25,7 @@ const StyledButton = styled(Button)`
 const YourComponent = ({ showMessage, message, alert, handlePlaceOrder }) => {
 
   const getLink = ()=>{
-    const response = fetch('localhost:3000/api/videocall',{
+    const response = fetch('http://localhost:3000/api/videocall',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
