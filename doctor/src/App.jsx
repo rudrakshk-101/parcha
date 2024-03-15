@@ -7,7 +7,8 @@ import Home from './Home';
 import FormsPage from "./FormsPage"
 import MedicalHistoryPage from './MedicalHistoryPage';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import PrescriptionUpdate from "./PrescriptionUpdate"
+import PrescriptionUpdate from "./PrescriptionUpdate";
+import VideoCall from "./videoCall"
 
 function App() {
  const [count, setCount] = useState(0);
@@ -28,6 +29,7 @@ function App() {
         <Route path='/prescribing' element={<FormsPage />} />
         <Route path='/medicalhistory' element={<MedicalHistoryPage />} />
         <Route path='/prescriptionupdate' element={<PrescriptionUpdate />} />
+        <Route path='/videocall' element={<VideoCall />} />
       </Routes>
       </BrowserRouter>
     </>

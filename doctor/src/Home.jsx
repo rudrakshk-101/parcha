@@ -36,6 +36,11 @@ function HomePage() {
           Update Prescription
         </StyledButton>
         </Link>
+        <Link to="/videocall">
+        <StyledButton variant="contained" color="secondary">
+          Start Call with Patient
+        </StyledButton>
+        </Link>
       </Box>
     </Container>
  );
