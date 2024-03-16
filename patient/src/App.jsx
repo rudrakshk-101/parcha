@@ -7,6 +7,7 @@ import MedicalHistoryPage from './MedicalHistoryPage';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import PrescriptionCard from './PrescriptionCard';
 import './SignInButton.css';
+import Logo from "../public/logo2.png"
 
 function App() {
  const [count, setCount] = useState(0);
@@ -31,6 +32,7 @@ function App() {
           <Route path='/prescriptioncard' element={<PrescriptionCard />} />
         </Routes>
       </BrowserRouter>
+      <img src={Logo} alt="" className="logoImg" />
     </>
  );
 }

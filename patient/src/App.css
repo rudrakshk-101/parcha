@@ -97,7 +97,7 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  background-image: url('./assets/Parcha.co.png');
+  background-image: url('./assets/parch.co.jpg');
   /* opacity: 0.9; */
   background-size: cover;
   background-repeat: no-repeat;
@@ -116,4 +116,11 @@ body {
   left: 0;
   top: 0;
   opacity: 0.2;
+ }
+
+ .logoImg{
+  position: absolute;
+  left: 3vw;
+  top: 3vh;
+  width: 5vw;
  }

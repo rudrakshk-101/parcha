@@ -8,10 +8,14 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '16px',
+    backgroundColor: 'lightgray',
+    paddingTop: '10px',
+    paddingBottom: '2vh',
+    borderRadius: '10px',
+    marginBottom: '5vh',
  },
  button: {
-    marginTop: '16px',
+    marginTop: '20vh',
  },
 });
 
@@ -41,7 +45,7 @@ const PharmacistForm = () => {
           onChange={(e) => setPhoneNumber(e.target.value)}
           required
         />
-        <Button variant="contained" color="primary" type="submit" onSubmit={handleSubmit} className={classes.button}>
+        <Button variant="contained" color="primary" type="submit" onSubmit={handleSubmit} className={classes.button}style={{marginTop:8}}>
           Submit
         </Button>
       </form>

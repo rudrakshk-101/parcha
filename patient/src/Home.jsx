@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'; // Assuming you're using react-router for navigation
 import { Fade } from '@material-ui/core'; // Assuming you're using Material-UI for the Fade effect
 import { Typography, Box, Button } from '@material-ui/core'; // Assuming you're using Material-UI for UI components
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 // Define your styled components
@@ -23,8 +23,10 @@ const StyledButton = styled(Button)`
 
 // Your component
 const YourComponent = ({ showMessage, message, alert, handlePlaceOrder }) => {
+  const navigateTo=useNavigate();
 
   const getLink = ()=>{
+    navigateTo('http://localhost:5173/videocall?roomID=qYhgD');
     const response = fetch('http://localhost:3000/api/videocall',{
       method: 'GET',
       headers: {
@@ -89,10 +91,13 @@ const YourComponent = ({ showMessage, message, alert, handlePlaceOrder }) => {
         <StyledButton variant="contained" color="secondary" onClick={handlePlaceOrder}>
           Place Order
         </StyledButton>
+        </div>
+        <div className="buttonMargin">
         <StyledButton variant="contained" color="secondary" onClick={getLink}>
           Video Appointment
         </StyledButton>
         </div>
+        
       </Box>
     </div>
         </div>

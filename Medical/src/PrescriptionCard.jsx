@@ -122,8 +122,8 @@ const PrescriptionCard = () => {
  }
 
  return (
-    <Card className={classes.card}>
-      <CardContent>
+    <Card className={classes.card} >
+      <CardContent >
         <Typography variant="h5" component="div" className={classes.title}>
           Prescription Details
         </Typography>

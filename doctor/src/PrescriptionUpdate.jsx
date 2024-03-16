@@ -10,8 +10,18 @@ const FormContainer = styled(Box)({
  justifyContent: 'space-between',
  alignItems: 'center',
  flexWrap: 'wrap',
+ top: '5vh',
+ position: 'absolute',
+ left: '5vw',
+ right: '5vw',
+ bottom: '5vh',
  gap: '20px',
  padding: '20px',
+ backgroundColor: 'lightGray',
+ borderRadius: '10px',
+ boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+ height: '100%',
+ position: 'relative',
 });
 
 const FormBox = styled(Box)({
@@ -20,6 +30,7 @@ const FormBox = styled(Box)({
  padding: '20px',
  borderRadius: '10px',
  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+ backgroundColor: 'lightGray',
 });
 
 const StyledButton = styled(Button)({
@@ -37,11 +48,12 @@ const StyledButton = styled(Button)({
 const ViewHistoryButton = styled(Button)({
  fontSize: '1.2rem',
  padding: '10px 20px',
- marginTop: '20px',
  borderRadius: '10px',
  textTransform: 'none',
  backgroundColor: '#007bff',
  color: '#fff',
+ bottom:'70px',
+ marginBottom: '20px',
  '&:hover': {
     backgroundColor: '#0056b3',
     color: '#fff',
@@ -130,12 +142,9 @@ function PrescriptionUpdate() {
           </Typography>
           <TextField fullWidth label="Description" variant="outlined" margin="normal" multiline rows={4} />
           <Medicine />
-          <StyledButton variant="contained" color="secondary">
-            Submit
-          </StyledButton>
         </FormBox>
       </FormContainer>
-      <Box display="flex" justifyContent="center" marginTop="20px">
+      <Box display="flex" justifyContent="center"  marginLeft={100}>
         <Link to="/medicalhistory">
           <ViewHistoryButton variant="contained" color="primary">
             View Patient's Medical History

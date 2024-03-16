@@ -12,6 +12,7 @@ const FormContainer = styled(Box)({
  flexWrap: 'wrap',
  gap: '20px',
  padding: '20px',
+ backgroundColor: "white "
 });
 
 const FormBox = styled(Box)({
@@ -176,7 +177,7 @@ function MedicalFormPage() {
           <Medicine phoneNo={formState.phoneNo} description={formState.description}/>
         </FormBox>
       </FormContainer>
-      <Box display="flex" justifyContent="center" marginTop="20px">
+      <Box display="flex" justifyContent="center">
         <Link to="/medicalhistory">
           <ViewHistoryButton variant="contained" color="primary">
             View Patient's Medical History
