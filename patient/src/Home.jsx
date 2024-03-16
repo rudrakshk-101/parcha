@@ -25,6 +25,13 @@ const StyledButton = styled(Button)`
 const YourComponent = ({ showMessage, message, alert, handlePlaceOrder }) => {
   const navigateTo=useNavigate();
 
+  const onViewHistory =()=>{
+
+
+
+    navigateTo('/medicalhistory');
+  }
+
   const getLink = ()=>{
     navigateTo('http://localhost:5173/videocall?roomID=qYhgD');
     const response = fetch('http://localhost:3000/api/videocall',{
@@ -81,11 +88,11 @@ const YourComponent = ({ showMessage, message, alert, handlePlaceOrder }) => {
         </Link>
         </div>
         <div className="buttonMargin">
-        <Link to="/medicalhistory">
-          <StyledButton variant="contained" color="secondary">
+        {/* <Link to="/medicalhistory"> */}
+          <StyledButton variant="contained" color="secondary" onClick={onViewHistory}>
             View History
           </StyledButton>
-        </Link>
+        {/* </Link> */}
         </div>
         <div className="buttonMargin">
         <StyledButton variant="contained" color="secondary" onClick={handlePlaceOrder}>
@@ -104,6 +111,9 @@ const YourComponent = ({ showMessage, message, alert, handlePlaceOrder }) => {
       )}
     </BackgroundImageContainer>
     <div className="backgroundblack"></div>
+    <div className="parchaWritten">
+      Parcha
+    </div>
     </div>
  );
 };
